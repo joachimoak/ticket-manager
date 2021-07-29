@@ -23,6 +23,7 @@ createConnection({
     ],
     synchronize: true,
     logging: true
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
 }).then(async connection => {
 
     try {
