@@ -102,3 +102,6 @@ dist
 
 # TernJS port file
 .tern-port
+
+# UML diagrams folder
+uml_diagrams/
