@@ -1,6 +1,6 @@
 module.exports = {
   env: {
-    es6: true,
+    es2021: true,
     node: true,
   },
   extends: ["airbnb-base", "prettier"],
@@ -10,11 +10,11 @@ module.exports = {
     SharedArrayBuffer: "readonly",
   },
   parserOptions: {
-    ecmaVersion: 2018,
     sourceType: "module",
+    ecmaVersion: 12,
   },
   rules: {
-    "prettier/prettier": "error",
+    // "prettier/prettier": "error",
     "class-methods-use-this": "off",
     "no-param-reassign": "off",
     camelcase: "off",
