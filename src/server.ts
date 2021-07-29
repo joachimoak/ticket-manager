@@ -5,10 +5,9 @@ import express from "express";
 // common
 import morgan from "morgan";
 import cors from "cors";
-import bodyParser from "body-parser";
-import compression from "body-parser";
+import compression from "compression";
 ////
-
+// import routes from "./services";
 
 dotenv.config();
 
@@ -44,12 +43,12 @@ createConnection({
 
         // handle body request parsing
         app.use(
-            bodyParser.json({
+            express.json({
                 limit: "10mb"
             })
         );
         app.use(
-            bodyParser.urlencoded({
+            express.urlencoded({
                 limit: "10mb",
                 extended: true,
                 parameterLimit: 1000000,
@@ -66,7 +65,7 @@ createConnection({
         app.use(compression());
 
         // Routing
-
+        // app.use(routes);
 
         const _app_folder = "www";
 
@@ -78,7 +77,7 @@ createConnection({
 
         ///// Start server
         app.listen(process.env.SERVICE_PORT, () => {
-            console.log("ENV = " + process.env.ENVIRONMENT);
+            console.log("ENV= " + process.env.ENVIRONMENT);
             console.log("Express server launched !");
             console.log("Server Started. Listening on " + process.env.SERVICE_PORT);
             console.log("Node version in use: " + process.version);
