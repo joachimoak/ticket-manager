@@ -7,7 +7,7 @@ import morgan from "morgan";
 import cors from "cors";
 import compression from "compression";
 ////
-// import routes from "./services";
+import routes from "./services";
 
 dotenv.config();
 
@@ -26,18 +26,7 @@ createConnection({
 }).then(async connection => {
 
     try {
-        // const user = new User();
-        // user.firtName = "Koami";
-        // user.lastName = "Kpognon";
-        // user.username = "joachimoak";
-        // user.email = "koami.kpognon@yahoo.com";
-        // user.password = "@zerti";
-
-        // const userRepository = connection.getRepository(User);
-
-        // await userRepository.save(user);
-
-        // console.log("User has been saved");
+        console.log("Connected to the database.");
 
         const app = express();
 
@@ -65,7 +54,7 @@ createConnection({
         app.use(compression());
 
         // Routing
-        // app.use(routes);
+        app.use(routes);
 
         const _app_folder = "www";
 
@@ -77,7 +66,7 @@ createConnection({
 
         ///// Start server
         app.listen(process.env.SERVICE_PORT, () => {
-            console.log("ENV= " + process.env.ENVIRONMENT);
+            console.log("ENV = " + process.env.ENVIRONMENT);
             console.log("Express server launched !");
             console.log("Server Started. Listening on " + process.env.SERVICE_PORT);
             console.log("Node version in use: " + process.version);
