@@ -16,9 +16,9 @@ export class Comment {
     @UpdateDateColumn({ select: false, type: "timestamptz" })
     updateDate!: Date;
 
-    @ManyToOne(() => Ticket, ticket => ticket.comments)
+    @ManyToOne(() => Ticket, ticket => ticket.comments, { onDelete: 'CASCADE' })
     ticket!: Ticket;
 
-    @ManyToOne(() => User, user => user.comments)
+    @ManyToOne(() => User, user => user.comments) // opted to keep deleted users comments
     user!: User;
 }

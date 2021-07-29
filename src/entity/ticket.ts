@@ -25,7 +25,7 @@ export class Ticket {
     @UpdateDateColumn({ select: false, type: "timestamptz" })
     updateDate!: Date;
 
-    @ManyToOne(() => User, user => user.tickets)
+    @ManyToOne(() => User, user => user.tickets) // opted to keep tickets even their owners are deleted
     user!: User;
 
     @OneToMany(() => Comment, comment => comment.ticket)
