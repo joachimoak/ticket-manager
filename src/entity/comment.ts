@@ -1,8 +1,8 @@
-import { Column, Entity, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn, ManyToOne } from "typeorm";
+import { Column, Entity, PrimaryGeneratedColumn, ManyToOne } from "typeorm";
 import { Ticket } from "./ticket";
 import { User } from "./user"
 
-@Entity({ name: "ticket" })
+@Entity({ name: "comment" })
 export class Comment {
     @PrimaryGeneratedColumn()
     id!: number;
@@ -10,10 +10,10 @@ export class Comment {
     @Column()
     content!: string;
 
-    @CreateDateColumn({ select: false, type: "timestamptz" })
+    @Column({ default: () => "NOW()" })
     createDate!: Date;
 
-    @UpdateDateColumn({ select: false, type: "timestamptz" })
+    @Column({ default: () => "NOW()" })
     updateDate!: Date;
 
     @ManyToOne(() => Ticket, ticket => ticket.comments, { onDelete: 'CASCADE' })

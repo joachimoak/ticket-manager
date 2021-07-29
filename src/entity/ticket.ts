@@ -1,4 +1,4 @@
-import { Column, Entity, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn, ManyToOne, OneToMany } from "typeorm";
+import { Column, Entity, PrimaryGeneratedColumn, ManyToOne, OneToMany } from "typeorm";
 import { User } from "./user";
 import { Comment } from "./comment";
 
@@ -19,10 +19,10 @@ export class Ticket {
     @Column()
     status!: statusType;
 
-    @CreateDateColumn({ select: false, type: "timestamptz" })
+    @Column({ default: () => "NOW()" })
     createDate!: Date;
 
-    @UpdateDateColumn({ select: false, type: "timestamptz" })
+    @Column({ default: () => "NOW()" })
     updateDate!: Date;
 
     @ManyToOne(() => User, user => user.tickets) // opted to keep tickets even their owners are deleted
