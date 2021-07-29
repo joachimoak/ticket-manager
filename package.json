@@ -1,0 +1,19 @@
+{
+  "name": "ticket-to-ride",
+  "version": "1.0.0",
+  "description": "NodeJS technical case",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://joachimoak: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@github.com/joachimoak/ticket-to-ride.git"
+  },
+  "author": "Koami KPOGNON",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/joachimoak/ticket-to-ride/issues"
+  },
+  "homepage": "https://github.com/joachimoak/ticket-to-ride#readme"
+}
