@@ -1,5 +1,5 @@
 import { Entity, Column, PrimaryGeneratedColumn, OneToMany } from "typeorm";
-// import { Ticket } from "./ticket";
+import { Ticket } from "./ticket";
 // import { Comment } from "./comment";
 
 @Entity({ name: "user" })
@@ -22,8 +22,8 @@ export class User {
     @Column({ select: false })
     password!: string;
 
-    // @OneToMany(() => Ticket, ticket => ticket.user)
-    // tickets!: Ticket[];
+    @OneToMany(() => Ticket, ticket => ticket.user)
+    tickets!: Ticket[];
 
     // @OneToMany(() => Comment, comment => comment.ticket)
     // comments!: Comment[];
