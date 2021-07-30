@@ -20,6 +20,12 @@ getConnectionOptions()
             entities: [
                 __dirname + "/entity/**/*{.js,.ts}"
             ],
+            migrations: [
+                __dirname + "/migrations/**/*{.js,.ts}"
+            ],
+            subscribers: [
+                __dirname + "/subscriber/**/*{.js,.ts}"
+            ],
         })
             .then(() => {
                 try {
