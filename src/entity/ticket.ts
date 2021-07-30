@@ -1,6 +1,6 @@
 import { Column, Entity, PrimaryGeneratedColumn, ManyToOne, OneToMany } from "typeorm";
 import { User } from "./user";
-// import { Comment } from "./comment";
+import { Comment } from "./comment";
 
 // status type
 type statusType = 'todo' | 'wip' | 'done';
@@ -28,6 +28,6 @@ export class Ticket {
     @ManyToOne(() => User, user => user.tickets) // opted to keep tickets even their owners are deleted
     user!: User;
 
-    // @OneToMany(() => Comment, comment => comment.ticket)
-    // comments!: Comment[];
+    @OneToMany(() => Comment, comment => comment.ticket)
+    comments!: Comment[];
 }
