@@ -2,8 +2,6 @@ import { Entity, Column, PrimaryGeneratedColumn, OneToMany } from "typeorm";
 // import { Ticket } from "./ticket";
 // import { Comment } from "./comment";
 
-console.log("Voici le schema du USER")
-
 @Entity({ name: "user" })
 export class User {
     @PrimaryGeneratedColumn()
