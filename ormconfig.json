@@ -4,7 +4,7 @@
     "port": 3306,
     "username": "root",
     "password": "",
-    "database": "ticket_to_ride",
+    "database": "ticket_manager",
     "synchronize": true,
     "logging": true,
     "entities": [
