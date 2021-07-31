@@ -8,7 +8,7 @@ export class User {
     id!: number;
 
     @Column()
-    firtName!: string;
+    firstName!: string;
 
     @Column()
     lastName!: string;
