@@ -19,8 +19,8 @@ export class User {
     @Column({ unique: true })
     email!: string;
 
-    @Column({ select: false })
-    password!: string;
+    // @Column({ select: false })
+    // password!: string;
 
     @OneToMany(() => Ticket, ticket => ticket.user)
     tickets!: Ticket[];
