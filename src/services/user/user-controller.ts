@@ -37,9 +37,9 @@ export const createUser = async (req: Request, res: Response): Promise<void> => 
                 message: "Email already in use",
             });
         } else {
-            // const user = userRepository.create(reqUser);
-            let user = new User();
-            user = { ...user, ...reqUser }
+            const user = userRepository.create(reqUser);
+            // let user = new User();
+            // user = { ...user, ...reqUser }
             await userRepository.save(user);
 
             res.status(201).json({
