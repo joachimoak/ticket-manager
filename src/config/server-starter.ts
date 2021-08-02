@@ -5,6 +5,8 @@ import cors from "cors";
 import compression from "compression";
 ////
 import routes from "../services";
+import swaggerUI from "swagger-ui-express";
+import docs from "../docs";
 
 export const app = express();
 
@@ -41,6 +43,9 @@ export default async (): Promise<void> => {
         (router as any)[method](path, handler);
     })
     app.use(router);
+
+    // API docs
+    app.use('/docs', swaggerUI.serve, swaggerUI.setup(docs));
 
 
     const _app_folder = "www";
