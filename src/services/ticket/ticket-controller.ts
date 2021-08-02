@@ -16,8 +16,15 @@ export const getTickets = async (req: Request, res: Response): Promise<void> => 
 
 export const getTicketById = async (req: Request, res: Response): Promise<void> => {
     try {
-        //
-        res.status(201).json({});
+        const ticketRepository = getRepository(Ticket);
+        const ticket = await ticketRepository.findOne({
+            relations: ["user"],
+            where: { id: Number(req.params.id) },
+        });
+        if (!ticket) {
+            res.status(404).json({ message: "Ticket not found!" });
+        }
+        res.status(201).json(ticket);
     } catch (error) {
         res.status(500).json({ message: error.message });
     }
