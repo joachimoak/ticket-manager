@@ -1,5 +1,7 @@
 export default {
-    tags: {
-        name: 'Ticket CRUD operations'
-    }
+    tags: [{
+        name: 'Ticket operations'
+    }, {
+        name: 'User operations'
+    }]
 }
