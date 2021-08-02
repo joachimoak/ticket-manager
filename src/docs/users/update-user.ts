@@ -14,6 +14,15 @@ export default {
                 description: "Id of user to be updated"
             }
         ],
+        requestBody: {
+            content: {
+                'application/json': {
+                    schema: {
+                        $ref: '#/components/schemas/UserInput'
+                    }
+                }
+            }
+        },
         responses: {
 
             '200': {

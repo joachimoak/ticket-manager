@@ -3,6 +3,14 @@ export default {
         tags: ['Ticket operations'],
         description: "Update ticket",
         operationId: "updateTicket",
+        security: [{
+            jwt: {
+                type: "http",
+                scheme: "bearer",
+                in: "header",
+                bearerFormat: "JWT"
+            }
+        }],
         parameters: [
             {
                 name: "id",
@@ -14,6 +22,15 @@ export default {
                 description: "Id of ticket to be updated"
             }
         ],
+        requestBody: {
+            content: {
+                'application/json': {
+                    schema: {
+                        $ref: '#/components/schemas/TicketInput'
+                    }
+                }
+            }
+        },
         responses: {
 
             '200': {

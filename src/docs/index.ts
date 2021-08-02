@@ -4,6 +4,7 @@ import components from "./components";
 import tags from "./tags";
 import tickets from "./tickets";
 import users from "./users";
+import comments from "./comments";
 
 export default {
     ...basicInfo,
@@ -11,5 +12,6 @@ export default {
     ...components,
     ...tags,
     ...tickets,
-    ...users
+    ...users,
+    ...comments
 };

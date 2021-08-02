@@ -4,6 +4,14 @@ export default {
         description: "Create ticket",
         operationId: "createTicket",
         parameters: [],
+        security: [{
+            jwt: {
+                type: "http",
+                scheme: "bearer",
+                in: "header",
+                bearerFormat: "JWT"
+            }
+        }],
         requestBody: {
             content: {
                 'application/json': {

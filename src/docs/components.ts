@@ -11,6 +11,14 @@ export default {
                 description: "An email of an user",
                 example: "koami.kpognon@yahoo.com"
             },
+            securitySchemes: {
+                jwt: {
+                    type: "http",
+                    scheme: "bearer",
+                    in: "header",
+                    bearerFormat: "JWT"
+                },
+            },
             Ticket: {
                 type: 'object',
                 properties: {
@@ -97,6 +105,15 @@ export default {
                         type: 'number',
                         description: "Id of the involved ticket",
                         example: 2
+                    }
+                }
+            },
+            CommentInputEdit: {
+                type: 'object',
+                properties: {
+                    content: {
+                        type: 'string',
+                        description: "Comment's content"
                     }
                 }
             },
