@@ -3,7 +3,7 @@
 
 // const router = Router();
 
-import { createUser, deleteUser, editUser, getUserById, getUsers } from "./user-controller";
+import { createUser, deleteUser, editUser, getUserById, getUsers, login } from "./user-controller";
 
 // router.get("/api/users", getUsers);
 // router.post("/api/users", createUser);
@@ -47,6 +47,13 @@ export default [
         method: "delete",
         handler: [
             deleteUser
+        ]
+    },
+    {
+        path: "/api/login",
+        method: "post",
+        handler: [
+            login
         ]
     }
 ];
