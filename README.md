@@ -7,16 +7,16 @@
 - MySQL
 - and created database
 
-- Install the dependencies
+### Install the dependencies
 
 ```bash
 yarn install
 ```
 
-- Start the development server
+### Start the development server
 
 ```bash
 yarn dev
 ```
 
-- View the docs from [here](http://localhost:3000/docs)
+### View the docs from [here](http://localhost:3000/docs)
