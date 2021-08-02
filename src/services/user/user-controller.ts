@@ -6,9 +6,9 @@ const ENTITY_NAME = "User";
 
 export const getUsers = async (req: Request, res: Response): Promise<void> => {
     try {
-        //
-        console.log(ENTITY_NAME)
-        res.status(200).json([]);
+        const userRepository = getRepository(User);
+        const users = await userRepository.find();
+        res.status(200).json(users);
     } catch (error) {
         res.status(500).json({ message: error.message });
     }
