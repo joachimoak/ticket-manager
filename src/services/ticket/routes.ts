@@ -1,4 +1,4 @@
-import { createTicket, deleteTicket, editTicket, getTicketById, getTickets } from "./ticket-controller";
+import { createTicket, deleteTicket, editTicket, getTicketById, getTickets, getTicketComments } from "./ticket-controller";
 import { isAuthenticated } from "../../middleware/auth";
 
 export default [
@@ -37,6 +37,13 @@ export default [
         method: "delete",
         handler: [
             deleteTicket
+        ]
+    },
+    {
+        path: "/api/tickets/comments/:id",
+        method: "get",
+        handler: [
+            getTicketComments
         ]
     }
 ];

@@ -88,3 +88,21 @@ export const deleteTicket = async (req: Request, res: Response): Promise<void> =
         res.status(500).json({ message: error.message });
     }
 }
+
+export const getTicketComments = async (req: Request, res: Response): Promise<void> => {
+    try {
+        const ticketRepository = getRepository(Ticket);
+        const ticket = await ticketRepository.findOne({
+            relations: ["comments"],
+            where: { id: Number(req.params.id) },
+        });
+        if (!ticket) {
+            res.status(404).json({ message: "Ticket not found!" });
+        } else {
+            res.status(201).json(ticket.comments);
+        }
+
+    } catch (error) {
+        res.status(500).json({ message: error.message });
+    }
+}

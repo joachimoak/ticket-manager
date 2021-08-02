@@ -1,13 +1,13 @@
-// import { Router } from "express";
+import { createComment } from "./comment-controller";
+import { isAuthenticated } from "../../middleware/auth";
 
-// const router = Router();
-
-// import { createComment, deleteComment, editComment, getCommentById, getComments } from "./comment-controller";
-
-// router.get("/api/comments", getComments);
-// router.post("/api/comments", createComment);
-// router.get("/api/comments/:id", getCommentById);
-// router.put("/api/comments/:id", editComment);
-// router.delete("/api/comments/:id", deleteComment);
-
-// export default router;
+export default [
+    {
+        path: "/api/comments",
+        method: "post",
+        handler: [
+            isAuthenticated,
+            createComment
+        ]
+    }
+];
