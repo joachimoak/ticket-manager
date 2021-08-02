@@ -80,11 +80,23 @@ export const createComment = async (req: Request, res: Response): Promise<void> 
 //     }
 // }
 
-// export const deleteComment = async (req: Request, res: Response): Promise<void> => {
-//     try {
-//         //
-//         res.status(200).json({ message: ENTITY_NAME + " successfully removed" });
-//     } catch (error) {
-//         res.status(500).json({ message: error.message });
-//     }
-// }
+export const deleteComment = async (req: Request, res: Response): Promise<void> => {
+    try {
+        const commentRepository = getRepository(Comment);
+        const comment = await commentRepository.findOne({
+            id: Number(req.params.id),
+            user: req.body.user.id
+        });
+        if (!comment) {
+            res.status(404).json({ message: "Comment not found!" });
+        }
+        // else if (comment.user != user) {
+        //     throw new Error("You cannot edit this comment. You are not its owner.")
+        else {
+            await commentRepository.delete(comment)
+            res.status(200).json({ message: ENTITY_NAME + " successfully removed" });
+        }
+    } catch (error) {
+        res.status(500).json({ message: error.message });
+    }
+}
