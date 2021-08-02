@@ -43,7 +43,7 @@ export const createUser = async (req: Request, res: Response): Promise<void> => 
             await userRepository.save(user);
 
             res.status(201).json({
-                message: "User account was successfully created !",
+                message: "User account was successfully created!",
             });
         }
     } catch (error) {

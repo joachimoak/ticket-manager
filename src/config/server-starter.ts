@@ -1,4 +1,4 @@
-import express from "express";
+import express, { Router } from "express";
 // common
 import morgan from "morgan";
 import cors from "cors";
@@ -34,7 +34,14 @@ export default async (): Promise<void> => {
     app.use(compression());
 
     // Routing
-    app.use(routes);
+    const router = Router();
+    routes.map(route => {
+        const { method, path, handler } = route;
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        (router as any)[method](path, handler);
+    })
+    app.use(router);
+
 
     const _app_folder = "www";
 
