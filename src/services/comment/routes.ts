@@ -1,4 +1,4 @@
-import { createComment, deleteComment } from "./comment-controller";
+import { createComment, editComment, deleteComment } from "./comment-controller";
 import { isAuthenticated } from "../../middleware/auth";
 
 export default [
@@ -8,6 +8,14 @@ export default [
         handler: [
             isAuthenticated,
             createComment
+        ]
+    },
+    {
+        path: "/api/comments/:id",
+        method: "put",
+        handler: [
+            isAuthenticated,
+            editComment
         ]
     },
     {

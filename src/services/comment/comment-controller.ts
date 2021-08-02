@@ -52,33 +52,33 @@ export const createComment = async (req: Request, res: Response): Promise<void> 
     }
 }
 
-// export const editComment = async (req: Request, res: Response): Promise<void> => {
-//     try {
-//         const commentRepository = getRepository(Comment);
-//         const { title, description, status, user } = req.body;
-//         const reqComment = { title, description, status, updateDate: new Date() }
+export const editComment = async (req: Request, res: Response): Promise<void> => {
+    try {
+        const commentRepository = getRepository(Comment);
+        const { content, user } = req.body;
+        const reqComment = { content, updateDate: new Date() }
 
-//         const comment = await commentRepository.findOne({
-//             id: Number(req.params.id),
-//             user: user.id
-//         });
-//         if (!comment) {
-//             res.status(404).json({ message: "Comment not found!" });
-//         }
-//         // else if (comment.user != user) {
-//         //     throw new Error("You cannot edit this comment. You are not its owner.")
-//         else {
-//             await commentRepository.update({
-//                 id: Number(req.params.id),
-//                 user: user,
-//             }, reqComment);
-//             res.status(200).json({ message: ENTITY_NAME + " successfully modified" });
-//         }
+        const comment = await commentRepository.findOne({
+            id: Number(req.params.id),
+            user: user.id
+        });
+        if (!comment) {
+            res.status(404).json({ message: "Comment not found!" });
+        }
+        // else if (comment.user != user) {
+        //     throw new Error("You cannot edit this comment. You are not its owner.")
+        else {
+            await commentRepository.update({
+                id: Number(req.params.id),
+                user: user,
+            }, reqComment);
+            res.status(200).json({ message: ENTITY_NAME + " successfully modified" });
+        }
 
-//     } catch (error) {
-//         res.status(500).json({ message: error.message });
-//     }
-// }
+    } catch (error) {
+        res.status(500).json({ message: error.message });
+    }
+}
 
 export const deleteComment = async (req: Request, res: Response): Promise<void> => {
     try {
